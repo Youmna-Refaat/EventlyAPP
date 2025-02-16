@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
+import 'core/routes/app_routes.dart';
+import 'core/services/loading_service.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'core/theme/app_theme_manager.dart';
 import 'firebase_options.dart';
 import 'modules/layouts/settings_provider.dart';
 
@@ -16,6 +22,8 @@ void main() async {
       child: const EventlyApp(),
     ),
   );
+
+  configLoading();
 }
 
 class EventlyApp extends StatelessWidget {
@@ -27,7 +35,17 @@ class EventlyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: AppRoutes.onGenerateRoute,
+      theme: AppThemeManager.lightTheme,
+      darkTheme: AppThemeManager.darkTheme,
+      themeMode: provider.currentTheme,
       navigatorKey: navigatorKey,
+      builder: EasyLoading.init(
+        builder: BotToastInit(),
+      ),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale(provider.currentLanguage),
     );
   }
 }
