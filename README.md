@@ -59,16 +59,14 @@ flutter pub get
 ```
 ### Step 3: Set up Firebase
 
-```bash
 # Set up Firebase by creating a new project in the Firebase console and enabling the Firebase Realtime Database and Firebase Authentication.
 # Firebase documentation for detailed setup instructions: [https://firebase.google.com/docs/build]
-```
+
 ### Step 4: Set up Google Maps API
 
-```bash
 # Set up the Google Maps API by creating a new project in the Google Cloud Console and enabling the Google Maps JavaScript API.
 #  Google Cloud documentation for detailed setup instructions: [https://cloud.google.com/docs/]
-```
+
 ### Step 5: Build and Run the App
 
 ```bash
