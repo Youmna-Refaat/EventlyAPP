@@ -82,11 +82,15 @@ class EventCard extends StatelessWidget {
                         eventDataModel.isFavourite,
                       );
                     },
-                    child: Icon(
-                      eventDataModel.isFavourite
-                          ? Icons.favorite
-                          : Icons.favorite_border,
-                      color: AppColors.primaryColor,
+                    child: SizedBox(
+                      height: 40,
+                      width: 40,
+                      child: Icon(
+                        eventDataModel.isFavourite
+                            ? Icons.favorite
+                            : Icons.favorite_border,
+                        color: AppColors.primaryColor,
+                      ),
                     ),
                   ),
                 ],

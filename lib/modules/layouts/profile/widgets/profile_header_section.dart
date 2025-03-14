@@ -74,23 +74,25 @@ class _ProfileHeaderSectionState extends State<ProfileHeaderSection> {
                   ),
                 ),
                 15.setHorizontalSpace(),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      userData.name,
-                      style: AppTextStyles.styleBold24(context).copyWith(
-                        color: AppColors.white,
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        userData.name,
+                        style: AppTextStyles.styleBold24(context).copyWith(
+                          color: AppColors.white,
+                        ),
                       ),
-                    ),
-                    Text(
-                      userData.email,
-                      style: AppTextStyles.styleMedium16(context).copyWith(
-                        color: AppColors.white,
+                      Text(
+                        userData.email,
+                        style: AppTextStyles.styleMedium16(context).copyWith(
+                          color: AppColors.white,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ).setSymmetricPadding(context, horizontal: 20, vertical: 50),

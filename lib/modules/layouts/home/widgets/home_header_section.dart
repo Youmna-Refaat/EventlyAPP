@@ -68,22 +68,24 @@ class HomeHeaderSection extends StatelessWidget {
                   40.setVerticalSpace(),
                   Row(
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Welcome Back",
-                            style: AppTextStyles.styleRegular14(context)
-                                .copyWith(color: AppColors.white),
-                          ),
-                          Text(
-                            userData.name,
-                            style: AppTextStyles.styleBold24(context)
-                                .copyWith(color: AppColors.white),
-                          ),
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Welcome Back",
+                              style: AppTextStyles.styleRegular14(context)
+                                  .copyWith(color: AppColors.white),
+                            ),
+                            Text(
+                              userData.name,
+                              style: AppTextStyles.styleBold24(context)
+                                  .copyWith(color: AppColors.white),
+                            ),
+                          ],
+                        ),
                       ),
-                      const Spacer(),
+                      20.setHorizontalSpace(),
                       GestureDetector(
                         onTap: () {
                           if (provider.isDark()) {
@@ -155,7 +157,7 @@ class HomeHeaderSection extends StatelessWidget {
                               return categoryList[index]
                                   .setOnlyPadding(context, right: 5);
                             })
-                        .setOnlyPadding(context, bottom: 10, right: 5, left: 5),
+                        .setOnlyPadding(context, bottom: 15, right: 5, left: 5),
                   ),
                 ],
               ),
