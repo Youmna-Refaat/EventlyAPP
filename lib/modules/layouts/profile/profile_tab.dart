@@ -21,6 +21,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<SettingsProvider>(context);
+    final isDark = provider.isDark();
+
+    final dropdownFillColor = isDark ? AppColors.black : AppColors.white;
+    final dropdownTextColor = isDark ? AppColors.white : AppColors.black;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -42,8 +46,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   if (value != "English") provider.setCurrentLanguage("ar");
                 },
                 decoration: CustomDropdownDecoration(
-                  closedFillColor: AppColors.white,
-                  expandedFillColor: AppColors.white,
+                  closedFillColor: dropdownFillColor,
+                  expandedFillColor: dropdownFillColor,
                   closedBorder:
                       Border.all(color: AppColors.primaryColor, width: 1.8),
                   closedBorderRadius: BorderRadius.circular(18.0),
@@ -52,6 +56,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     size: 28,
                     color: AppColors.primaryColor,
                   ),
+                  hintStyle: TextStyle(color: dropdownTextColor),
+                  headerStyle: TextStyle(color: dropdownTextColor),
+                  listItemStyle: TextStyle(color: dropdownTextColor),
                 ),
               ),
               16.setVerticalSpace(),
@@ -72,8 +79,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   }
                 },
                 decoration: CustomDropdownDecoration(
-                  closedFillColor: AppColors.white,
-                  expandedFillColor: AppColors.white,
+                  closedFillColor: dropdownFillColor,
+                  expandedFillColor: dropdownFillColor,
                   closedBorder:
                       Border.all(color: AppColors.primaryColor, width: 1.8),
                   closedBorderRadius: BorderRadius.circular(18.0),
@@ -82,6 +89,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     size: 28,
                     color: AppColors.primaryColor,
                   ),
+                  hintStyle: TextStyle(color: dropdownTextColor),
+                  headerStyle: TextStyle(color: dropdownTextColor),
+                  listItemStyle: TextStyle(color: dropdownTextColor),
                 ),
               ),
               ElevatedButton(

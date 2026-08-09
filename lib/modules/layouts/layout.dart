@@ -1,8 +1,8 @@
 import 'package:evently_app/extenstions/extension.dart';
 import 'package:flutter/material.dart';
 import '../../core/routes/screens_route_names.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../core/theme/app_colors.dart';
+import '../../l10n/app_localizations.dart';
 import 'favourite/favourite_tab.dart';
 import 'home/home_tab.dart';
 import 'map/map_tab.dart';

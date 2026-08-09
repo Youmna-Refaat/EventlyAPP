@@ -1,3 +1,4 @@
+import 'package:evently_app/l10n/app_localizations.dart' show AppLocalizations;
 import 'package:flutter/material.dart';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -5,7 +6,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
 import 'core/routes/app_routes.dart';
 import 'core/services/loading_service.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'core/theme/app_theme_manager.dart';
 import 'firebase_options.dart';
 import 'modules/layouts/settings_provider.dart';

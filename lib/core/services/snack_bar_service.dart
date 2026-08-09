@@ -4,7 +4,6 @@ import 'package:evently_app/core/theme/app_text_styles.dart';
 import 'package:evently_app/extenstions/extension.dart';
 import 'package:evently_app/main.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SnackBarService {
   static void showSuccessMessage(String message) {
@@ -30,7 +29,7 @@ class SnackBarService {
                       AppTextStyles.styleMedium16(navigatorKey.currentContext!),
                   maxLines: 2,
                 ),
-                const Icon(FontAwesomeIcons.circleCheck, color: Colors.green)
+                const Icon(Icons.close, color: Colors.green)
               ],
             ).setSymmetricPadding(navigatorKey.currentContext!,
                 horizontal: 20, vertical: 10),
@@ -61,7 +60,7 @@ class SnackBarService {
                   style:
                       AppTextStyles.styleMedium16(navigatorKey.currentContext!),
                 ),
-                const Icon(FontAwesomeIcons.circleXmark, color: Colors.red)
+                const Icon(Icons.close, color: Colors.red)
               ],
             ).setSymmetricPadding(navigatorKey.currentContext!,
                 horizontal: 20, vertical: 10),

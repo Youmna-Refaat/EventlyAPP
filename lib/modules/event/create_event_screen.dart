@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import '../../core/constants/app_icons.dart';
 import '../../core/constants/app_images.dart';
@@ -227,7 +226,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                   controller: titleController,
                   hintText: "Event Title",
                   prefixIcn: const Icon(
-                    FontAwesomeIcons.penToSquare,
+                    Icons.edit,
                     color: AppColors.grey,
                   ),
                 ),
