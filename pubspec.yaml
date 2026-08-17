@@ -142,6 +142,7 @@ flutter:
     - assets/icons/
     - assets/fonts/
     - assets/map_styles/
+    - assets/screenshots/
 
   fonts:
     - family: "Inter"

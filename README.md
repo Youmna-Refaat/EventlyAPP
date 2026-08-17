@@ -1,4 +1,3 @@
-````markdown
 # Evently
 
 Evently is a Flutter app for discovering, creating, and managing local events. Users can browse events by category, view them on a map, save favourites, and manage their own events — all backed by Firebase.
@@ -18,29 +17,37 @@ Evently is a Flutter app for discovering, creating, and managing local events. U
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="assets/screenshots/Splash.png" width="220"/>
-  <img src="assets/screenshots/Register.png" width="220"/>
-  <img src="assets/screenshots/Home.png" width="220"/>
-  <img src="assets/screenshots/Event.png" width="220"/>
+  <img src="assets/screenshots/splash_screen.png" width="220" />
+  <img src="assets/screenshots/register_screen.png" width="220" />
+  <img src="assets/screenshots/home_screen.png" width="220" />
+  <img src="assets/screenshots/events.png" width="220" />
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/Map.png" width="220"/>
-  <img src="assets/screenshots/Favourite.png" width="220"/>
-  <img src="assets/screenshots/Profile.png" width="220"/>
+  <img src="assets/screenshots/maps.png" width="220" />
+  <img src="assets/screenshots/favourites.png" width="220" />
+  <img src="assets/screenshots/profile_screen.png" width="220" />
 </p>
 
-## Tech stack
+## Tech Stack
 
-- **Flutter** / Dart
-- **Firebase** — Auth, Cloud Firestore
-- **Google Maps** (`google_maps_flutter`) & **Geolocator** / **Geocoding** for location features
-- **Provider** for state management (theme & language settings)
+- **Flutter / Dart**
+- **Firebase** — Authentication & Cloud Firestore
+- **Google Maps** — `google_maps_flutter`
+- **Geolocator & Geocoding** — location services and address handling
+- **Provider** — state management for theme and language settings
 - **Google Sign-In**
-- **Shared Preferences** for local persistence
-- Supporting packages: `flutter_easyloading`, `bot_toast`, `flutter_svg`, `smooth_page_indicator`, `animated_custom_dropdown`, `permission_handler`, `intl`
+- **Shared Preferences** — local persistence
+- **Supporting packages**:
+  - `flutter_easyloading`
+  - `bot_toast`
+  - `flutter_svg`
+  - `smooth_page_indicator`
+  - `animated_custom_dropdown`
+  - `permission_handler`
+  - `intl`
 
-## Project structure
+## Project Structure
 
 ```text
 lib/
@@ -48,21 +55,19 @@ lib/
 │   ├── constants/       # App-wide constants (images, icons, storage keys)
 │   ├── models/          # Data models (Event, User, Onboarding, Category)
 │   ├── routes/          # Named routes & route generation
-│   ├── services/        # Firebase Auth/Firestore, location, local storage, snackbars, loading
-│   ├── theme/           # App colors, text styles, theme manager
+│   ├── services/        # Firebase, location, local storage, snackbar & loading services
+│   ├── theme/           # App colors, text styles & theme manager
 │   └── widgets/         # Shared/reusable widgets
 ├── extenstions/         # Dart extensions (validation, spacing, padding, context helpers)
 ├── l10n/                # Localization (English & Arabic)
 ├── modules/
-│   ├── authentication/  # Login, register, forgot password
-│   ├── event/           # Create, edit, view, and locate events
-│   ├── layouts/         # Main app shell: home, map, favourites, profile tabs
+│   ├── authentication/  # Login, register & forgot password
+│   ├── event/           # Create, edit, view & locate events
+│   ├── layouts/         # Main app shell: home, map, favourites & profile tabs
 │   ├── onBoarding/      # Onboarding flow
 │   └── splash/          # Splash screen
 ├── firebase_options.dart
 └── main.dart
-````
-
 ## Getting started
 
 ### Prerequisites
