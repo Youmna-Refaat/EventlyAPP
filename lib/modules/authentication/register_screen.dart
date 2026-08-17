@@ -13,7 +13,6 @@ import '../../core/services/snack_bar_service.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
 import '../../core/widgets/custom_elevated_button.dart';
-import '../../core/widgets/custom_language_choice_container.dart';
 import '../../core/widgets/custom_text_form_field.dart';
 import '../../main.dart';
 
@@ -195,10 +194,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ]),
             ),
-            const LanguageChoiceContainer().setVerticalPadding(
-              context,
-              value: 0.02.height,
-            ),
+            // const LanguageChoiceContainer().setVerticalPadding(
+            //   context,
+            //   value: 0.02.height,
+            // ),
           ]).setHorizontalPadding(context, value: 20),
         ),
       ),

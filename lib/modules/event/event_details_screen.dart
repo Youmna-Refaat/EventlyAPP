@@ -47,7 +47,9 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
             color: AppColors.primaryColor,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            context.goToNamed(
+              routeName: ScreensRouteNames.layoutRoute,
+            );
           },
         ),
         actions: [

@@ -1,3 +1,4 @@
+````markdown
 # Evently
 
 Evently is a Flutter app for discovering, creating, and managing local events. Users can browse events by category, view them on a map, save favourites, and manage their own events — all backed by Firebase.
@@ -14,6 +15,21 @@ Evently is a Flutter app for discovering, creating, and managing local events. U
 - 🌍 **Localization** — English and Arabic support (RTL-ready)
 - 👋 **Onboarding** — first-run walkthrough for new users
 
+## 📸 Screenshots
+
+<p align="center">
+  <img src="assets/screenshots/Splash.png" width="220"/>
+  <img src="assets/screenshots/Register.png" width="220"/>
+  <img src="assets/screenshots/Home.png" width="220"/>
+  <img src="assets/screenshots/Event.png" width="220"/>
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/Map.png" width="220"/>
+  <img src="assets/screenshots/Favourite.png" width="220"/>
+  <img src="assets/screenshots/Profile.png" width="220"/>
+</p>
+
 ## Tech stack
 
 - **Flutter** / Dart
@@ -26,60 +42,67 @@ Evently is a Flutter app for discovering, creating, and managing local events. U
 
 ## Project structure
 
-```
+```text
 lib/
 ├── core/
 │   ├── constants/       # App-wide constants (images, icons, storage keys)
 │   ├── models/          # Data models (Event, User, Onboarding, Category)
 │   ├── routes/          # Named routes & route generation
 │   ├── services/        # Firebase Auth/Firestore, location, local storage, snackbars, loading
-│   ├── theme/            # App colors, text styles, theme manager
-│   └── widgets/          # Shared/reusable widgets
-├── extenstions/          # Dart extensions (validation, spacing, padding, context helpers)
-├── l10n/                 # Localization (English & Arabic)
+│   ├── theme/           # App colors, text styles, theme manager
+│   └── widgets/         # Shared/reusable widgets
+├── extenstions/         # Dart extensions (validation, spacing, padding, context helpers)
+├── l10n/                # Localization (English & Arabic)
 ├── modules/
-│   ├── authentication/   # Login, register, forgot password
-│   ├── event/             # Create, edit, view, and locate events
-│   ├── layouts/           # Main app shell: home, map, favourites, profile tabs
-│   ├── onBoarding/        # Onboarding flow
-│   └── splash/            # Splash screen
+│   ├── authentication/  # Login, register, forgot password
+│   ├── event/           # Create, edit, view, and locate events
+│   ├── layouts/         # Main app shell: home, map, favourites, profile tabs
+│   ├── onBoarding/      # Onboarding flow
+│   └── splash/          # Splash screen
 ├── firebase_options.dart
 └── main.dart
-```
+````
 
 ## Getting started
 
 ### Prerequisites
 
-- [Flutter SDK](https://docs.flutter.dev/get-started/install) (stable channel)
-- A [Firebase project](https://console.firebase.google.com/) with Authentication (Email/Password + Google) and Cloud Firestore enabled
-- A Google Maps API key for Android and iOS
+* [Flutter SDK](https://docs.flutter.dev/get-started/install) (stable channel)
+* A [Firebase project](https://console.firebase.google.com/) with Authentication (Email/Password + Google) and Cloud Firestore enabled
+* A Google Maps API key for Android and iOS
 
 ### Setup
 
 1. **Clone the repo**
+
    ```bash
    git clone https://github.com/<your-username>/evently.git
    cd evently
    ```
 
 2. **Install dependencies**
+
    ```bash
    flutter pub get
    ```
 
 3. **Configure Firebase**
-   - Install the [FlutterFire CLI](https://firebase.google.com/docs/flutter/setup) and run:
-     ```bash
-     flutterfire configure
-     ```
-   - This generates `lib/firebase_options.dart` and adds the platform config files (`google-services.json` for Android, `GoogleService-Info.plist` for iOS).
+
+   * Install the [FlutterFire CLI](https://firebase.google.com/docs/flutter/setup) and run:
+
+   ```bash
+   flutterfire configure
+   ```
+
+   * This generates `lib/firebase_options.dart` and adds the platform config files (`google-services.json` for Android, `GoogleService-Info.plist` for iOS).
 
 4. **Add your Google Maps API key**
-   - Android: add your key to `android/app/src/main/AndroidManifest.xml`
-   - iOS: add your key to `ios/Runner/AppDelegate.swift`
+
+   * Android: add your key to `android/app/src/main/AndroidManifest.xml`
+   * iOS: add your key to `ios/Runner/AppDelegate.swift`
 
 5. **Run the app**
+
    ```bash
    flutter run
    ```
@@ -87,6 +110,7 @@ lib/
 ## Localization
 
 Translations live in `lib/l10n/*.arb`. After editing an `.arb` file, regenerate the localization classes with:
+
 ```bash
 flutter gen-l10n
 ```
@@ -98,3 +122,6 @@ Contributions are welcome! Please open an issue to discuss any major changes bef
 ## License
 
 This project currently has no license specified. Add a `LICENSE` file to define how others may use this code.
+
+```
+```
