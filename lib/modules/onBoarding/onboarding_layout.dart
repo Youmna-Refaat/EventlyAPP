@@ -19,35 +19,36 @@ class OnboardingLayout extends StatefulWidget {
 class _OnboardingLayoutState extends State<OnboardingLayout> {
   final PageController pageController = PageController();
   int currentPage = 0;
-  final List<Widget> onBoardingPages = [
-    OnboardingPage(
-      onBoardingModel: OnBoardingModel(
-        image: AppImages.imagesOnBoardingInspire,
-        title: 'Find Events That Inspire You',
-        desc:
-            'Dive into a world of events crafted to fit your unique interests. Whether you\'re into live music, art workshops, professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.',
+
+  List<Widget> _buildOnBoardingPages(BuildContext context) {
+    return [
+      OnboardingPage(
+        onBoardingModel: OnBoardingModel(
+          image: AppImages.imagesOnBoardingInspire,
+          title: context.l10n.onboardingInspireTitle,
+          desc: context.l10n.onboardingInspireDesc,
+        ),
       ),
-    ),
-    OnboardingPage(
-      onBoardingModel: OnBoardingModel(
-        image: AppImages.imagesOnBoardingPlanning,
-        title: 'Effortless Event Planning',
-        desc:
-            'Take the hassle out of organizing events with our all-in-one planning tools. From setting up invites and managing RSVPs to scheduling reminders and coordinating details, we’ve got you covered. Plan with ease and focus on what matters – creating an unforgettable experience for you and your guests.',
+      OnboardingPage(
+        onBoardingModel: OnBoardingModel(
+          image: AppImages.imagesOnBoardingPlanning,
+          title: context.l10n.onboardingPlanningTitle,
+          desc: context.l10n.onboardingPlanningDesc,
+        ),
       ),
-    ),
-    OnboardingPage(
-      onBoardingModel: OnBoardingModel(
-        image: AppImages.imagesOnBoardingShare,
-        title: 'Connect with Friends & Share Moments',
-        desc:
-            'Make every event memorable by sharing the experience with others. Our platform lets you invite friends, keep everyone in the loop, and celebrate moments together. Capture and share the excitement with your network, so you can relive the highlights and cherish the memories.',
+      OnboardingPage(
+        onBoardingModel: OnBoardingModel(
+          image: AppImages.imagesOnBoardingShare,
+          title: context.l10n.onboardingShareTitle,
+          desc: context.l10n.onboardingShareDesc,
+        ),
       ),
-    ),
-  ];
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
+    final onBoardingPages = _buildOnBoardingPages(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.white,

@@ -44,11 +44,11 @@ class _ProfileHeaderSectionState extends State<ProfileHeaderSection> {
           }
 
           if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
+            return Center(child: Text(context.l10n.errorWithMessage(snapshot.error!)));
           }
 
           if (!snapshot.hasData) {
-            return const Center(child: Text('No user data found'));
+            return Center(child: Text(context.l10n.noUserDataFound));
           }
           final userData = snapshot.data!;
 

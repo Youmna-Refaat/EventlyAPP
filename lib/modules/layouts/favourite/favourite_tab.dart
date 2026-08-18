@@ -42,7 +42,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: AppColors.white,
-                hintText: "Search for Event",
+                hintText: context.l10n.searchForEvent,
                 hintStyle: AppTextStyles.styleBold14(context)
                     .copyWith(color: AppColors.primaryColor),
                 prefixIcon: SvgPicture.asset(AppIcons.iconsSearch)
@@ -68,7 +68,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                   return Column(
                     children: [
                       Text(
-                        "Something went wrong..",
+                        context.l10n.somethingWentWrong,
                         style: AppTextStyles.styleMedium16(context)
                             .copyWith(color: AppColors.primaryColor),
                       ),
@@ -114,7 +114,7 @@ class _FavouritesScreenState extends State<FavouritesScreen> {
                         ),
                       )
                     : Text(
-                        "No events available",
+                        context.l10n.noEventsAvailable,
                         style: AppTextStyles.styleMedium16(context)
                             .copyWith(color: AppColors.primaryColor),
                       ).setVerticalPadding(context, value: 0.3.height);

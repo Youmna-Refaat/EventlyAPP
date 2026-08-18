@@ -21,6 +21,8 @@ Evently is a Flutter app for discovering, creating, and managing local events. U
   <img src="assets/screenshots/register_screen.png" width="220" />
   <img src="assets/screenshots/home_screen.png" width="220" />
   <img src="assets/screenshots/events.png" width="220" />
+  <img src="assets/screenshots/arabic_home.png" width="220" />
+  <img src="assets/screenshots/arabic_event.png" width="220" />
 </p>
 
 <p align="center">

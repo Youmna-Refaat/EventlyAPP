@@ -25,7 +25,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     String email = emailController.text.trim();
 
     if (email.isEmpty) {
-      SnackBarService.showErrorMessage("Please enter your email");
+      SnackBarService.showErrorMessage(context.l10n.pleaseEnterEmail);
       return;
     }
 
@@ -34,7 +34,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     if (success) {
       Navigator.pop(navigatorKey.currentContext!);
       SnackBarService.showSuccessMessage(
-          "Password reset link\nsent to your email");
+          context.l10n.passwordResetLinkSent);
     }
   }
 
@@ -45,7 +45,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
         backgroundColor: AppColors.white,
         appBar: AppBar(
           title: Text(
-            "Forget Password",
+            context.l10n.forgetPassword,
             style: AppTextStyles.styleMedium20(context)
                 .copyWith(color: AppColors.primaryColor),
           ),
@@ -65,14 +65,14 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
               Image.asset(AppImages.imagesForgetPassword),
               CustomTextFormField(
                 controller: emailController,
-                hintText: "Email",
+                hintText: context.l10n.emailHint,
                 prefixIcn: SvgPicture.asset(
                   AppIcons.iconsEmail,
                   height: 5,
                 ),
               ).setVerticalPadding(context, value: 0.02.height),
               CustomElevatedButton(
-                text: "Reset Password",
+                text: context.l10n.resetPassword,
                 onPressed: _resetPassword,
               ).setVerticalPadding(context, value: 0.02.height),
             ],

@@ -1,7 +1,6 @@
 import 'package:evently_app/extenstions/extension.dart';
 import 'package:flutter/material.dart';
 import '../../core/constants/app_images.dart';
-import '../../core/models/onboarding_model.dart';
 import '../../core/routes/screens_route_names.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
@@ -16,12 +15,7 @@ class OnboardingStart extends StatefulWidget {
   State<OnboardingStart> createState() => _OnboardingStartState();
 }
 
-OnBoardingModel onBoardingModel = OnBoardingModel(
-  image: AppImages.imagesOnBoardingExperience,
-  title: 'Personalize Your Experience',
-  desc:
-      'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.',
-);
+const String onBoardingStartImage = AppImages.imagesOnBoardingExperience;
 
 class _OnboardingStartState extends State<OnboardingStart> {
   @override
@@ -36,15 +30,15 @@ class _OnboardingStartState extends State<OnboardingStart> {
               AppImages.imagesOnBoardingAppBar,
               height: 50,
             ).setOnlyPadding(context, top: 5),
-            Image.asset(onBoardingModel.image)
+            Image.asset(onBoardingStartImage)
                 .setVerticalPadding(context, value: 0.03.height),
             Text(
-              onBoardingModel.title,
+              context.l10n.onboardingPersonalizeTitle,
               style: AppTextStyles.styleBold20(context)
                   .copyWith(color: AppColors.primaryColor),
             ),
             Text(
-              onBoardingModel.desc,
+              context.l10n.onboardingPersonalizeDesc,
               style: AppTextStyles.styleMedium16(context)
                   .copyWith(color: AppColors.black),
             ).setVerticalPadding(
@@ -54,7 +48,7 @@ class _OnboardingStartState extends State<OnboardingStart> {
             Row(
               children: [
                 Text(
-                  "Language",
+                  context.l10n.language,
                   style: AppTextStyles.styleMedium20(context)
                       .copyWith(color: AppColors.primaryColor),
                 ),
@@ -65,7 +59,7 @@ class _OnboardingStartState extends State<OnboardingStart> {
             Row(
               children: [
                 Text(
-                  "Theme",
+                  context.l10n.theme,
                   style: AppTextStyles.styleMedium20(context)
                       .copyWith(color: AppColors.primaryColor),
                 ),
@@ -76,7 +70,7 @@ class _OnboardingStartState extends State<OnboardingStart> {
             SizedBox(
               height: 0.07.height,
               child: CustomElevatedButton(
-                text: "Lets Start",
+                text: context.l10n.letsStart,
                 onPressed: () {
                   context.goToNamedReplace(
                       routeName: ScreensRouteNames.onBoardingRoute);

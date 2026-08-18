@@ -112,7 +112,7 @@ class _MapForEventLocationState extends State<MapForEventLocation> {
             width: double.infinity,
             color: AppColors.primaryColor,
             child: Text(
-              "Tap on Location To Select",
+              context.l10n.mapTapToSelect,
               textAlign: TextAlign.center,
               style: AppTextStyles.styleMedium20(context)
                   .copyWith(color: AppColors.white),

@@ -86,7 +86,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
     final List<Widget> categoryList = [
       CategoryCard(
         icon: AppIcons.iconsSport,
-        title: "Sports",
+        title: context.l10n.categorySports,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 0,
         onTap: () {
@@ -97,7 +97,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsBirthday,
-        title: "Birthdays",
+        title: context.l10n.categoryBirthdays,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 1,
         onTap: () {
@@ -108,7 +108,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsBookClub,
-        title: "Book Club",
+        title: context.l10n.categoryBookClub,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 2,
         onTap: () {
@@ -119,7 +119,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsMeeting,
-        title: "Meetings",
+        title: context.l10n.categoryMeetings,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 3,
         onTap: () {
@@ -130,7 +130,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsGaming,
-        title: "Gaming",
+        title: context.l10n.categoryGaming,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 4,
         onTap: () {
@@ -141,7 +141,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsHoliday,
-        title: "Holidays",
+        title: context.l10n.categoryHolidays,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 5,
         onTap: () {
@@ -152,7 +152,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsWorkshop,
-        title: "Workshops",
+        title: context.l10n.categoryWorkshops,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 6,
         onTap: () {
@@ -163,7 +163,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsExihbition,
-        title: "Exhibtions",
+        title: context.l10n.categoryExhibitions,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 7,
         onTap: () {
@@ -176,7 +176,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Create Event",
+          context.l10n.createEvent,
           style: AppTextStyles.styleMedium20(context)
               .copyWith(color: AppColors.primaryColor),
         ),
@@ -220,23 +220,23 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Title", style: AppTextStyles.styleMedium16(context)),
+                Text(context.l10n.titleLabel, style: AppTextStyles.styleMedium16(context)),
                 5.setVerticalSpace(),
                 CustomTextFormField(
                   controller: titleController,
-                  hintText: "Event Title",
+                  hintText: context.l10n.eventTitleHint,
                   prefixIcn: const Icon(
                     Icons.edit,
                     color: AppColors.grey,
                   ),
                 ),
                 16.setVerticalSpace(),
-                Text("Description",
+                Text(context.l10n.description,
                     style: AppTextStyles.styleMedium16(context)),
                 5.setVerticalSpace(),
                 CustomTextFormField(
                   controller: descriptionController,
-                  hintText: "Event Description",
+                  hintText: context.l10n.eventDescriptionHint,
                   minLines: 3,
                 ),
                 16.setVerticalSpace(),
@@ -249,7 +249,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                     ),
                     5.setHorizontalSpace(),
                     Text(
-                      "Event Date",
+                      context.l10n.eventDate,
                       style: AppTextStyles.styleMedium16(context),
                     ),
                     const Spacer(),
@@ -260,7 +260,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                       child: Text(
                         selectedDate != null
                             ? DateFormat("dd MMM yyy").format(selectedDate!)
-                            : "Choose Date",
+                            : context.l10n.chooseDate,
                         style: AppTextStyles.styleMedium16(context).copyWith(
                           color: AppColors.primaryColor,
                         ),
@@ -306,7 +306,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                           selectedLatitude != null && selectedLongitude != null
                               ? Expanded(
                                   child: Text(
-                                    "Location: $location",
+                                    context.l10n.locationLabel(location),
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: AppTextStyles.styleMedium16(context)
@@ -316,7 +316,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                                       horizontal: 20, vertical: 10),
                                 )
                               : Text(
-                                  "Choose Event Location",
+                                  context.l10n.chooseEventLocation,
                                   style: AppTextStyles.styleMedium16(context)
                                       .copyWith(color: AppColors.primaryColor),
                                 ).setSymmetricPadding(context,
@@ -331,7 +331,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                     )),
                 16.setVerticalSpace(),
                 CustomElevatedButton(
-                  text: "Add Event",
+                  text: context.l10n.addEvent,
                   onPressed: () {
                     String selectedCategoryName =
                         eventCategories[selectedCategoryIndex].categoryName;
@@ -359,12 +359,12 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                             navigatorKey.currentContext!.goToNamed(
                                 routeName: ScreensRouteNames.layoutRoute);
                             SnackBarService.showSuccessMessage(
-                                "Event was created successfully");
+                                context.l10n.eventCreatedSuccessfully);
                           }
                         });
                       } else {
                         SnackBarService.showErrorMessage(
-                            "You must select event date");
+                            context.l10n.mustSelectEventDate);
                       }
                     }
                   },

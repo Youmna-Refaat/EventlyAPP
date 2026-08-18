@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     List<Widget> categoryList = [
       CategoryCard(
           icon: AppIcons.iconsAll,
-          title: "All",
+          title: context.l10n.categoryAll,
           isSelected: selectedCategoryIndex == 0,
           onTap: () {
             setState(() {
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
       CategoryCard(
           icon: AppIcons.iconsSport,
-          title: "Sports",
+          title: context.l10n.categorySports,
           isSelected: selectedCategoryIndex == 1,
           onTap: () {
             setState(() {
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
       CategoryCard(
           icon: AppIcons.iconsBirthday,
-          title: "Birthdays",
+          title: context.l10n.categoryBirthdays,
           isSelected: selectedCategoryIndex == 2,
           onTap: () {
             setState(() {
@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
       CategoryCard(
           icon: AppIcons.iconsBookClub,
-          title: "Book Club",
+          title: context.l10n.categoryBookClub,
           isSelected: selectedCategoryIndex == 3,
           onTap: () {
             setState(() {
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
       CategoryCard(
           icon: AppIcons.iconsMeeting,
-          title: "Meetings",
+          title: context.l10n.categoryMeetings,
           isSelected: selectedCategoryIndex == 4,
           onTap: () {
             setState(() {
@@ -92,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
       CategoryCard(
           icon: AppIcons.iconsGaming,
-          title: "Gaming",
+          title: context.l10n.categoryGaming,
           isSelected: selectedCategoryIndex == 5,
           onTap: () {
             setState(() {
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
       CategoryCard(
           icon: AppIcons.iconsHoliday,
-          title: "Holidays",
+          title: context.l10n.categoryHolidays,
           isSelected: selectedCategoryIndex == 6,
           onTap: () {
             setState(() {
@@ -110,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
       CategoryCard(
           icon: AppIcons.iconsWorkshop,
-          title: "Workshops",
+          title: context.l10n.categoryWorkshops,
           isSelected: selectedCategoryIndex == 7,
           onTap: () {
             setState(() {
@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }),
       CategoryCard(
           icon: AppIcons.iconsExihbition,
-          title: "Exhibtions",
+          title: context.l10n.categoryExhibitions,
           isSelected: selectedCategoryIndex == 8,
           onTap: () {
             setState(() {
@@ -144,7 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return Column(
                 children: [
                   Text(
-                    "Something went wrong..",
+                    context.l10n.somethingWentWrong,
                     style: AppTextStyles.styleMedium16(context)
                         .copyWith(color: AppColors.primaryColor),
                   ),
@@ -184,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ).setHorizontalPadding(context, value: 20),
                   )
                 : Text(
-                    "No events available",
+                    context.l10n.noEventsAvailable,
                     style: AppTextStyles.styleMedium16(context)
                         .copyWith(color: AppColors.primaryColor),
                   ).setVerticalPadding(context, value: 0.2.height);

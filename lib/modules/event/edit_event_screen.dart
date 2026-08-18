@@ -52,7 +52,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
     final List<Widget> categoryList = [
       CategoryCard(
         icon: AppIcons.iconsSport,
-        title: "Sports",
+        title: context.l10n.categorySports,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 0,
         onTap: () {
@@ -64,7 +64,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsBirthday,
-        title: "Birthdays",
+        title: context.l10n.categoryBirthdays,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 1,
         onTap: () {
@@ -76,7 +76,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsBookClub,
-        title: "Book Club",
+        title: context.l10n.categoryBookClub,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 2,
         onTap: () {
@@ -88,7 +88,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsMeeting,
-        title: "Meetings",
+        title: context.l10n.categoryMeetings,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 3,
         onTap: () {
@@ -100,7 +100,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsGaming,
-        title: "Gaming",
+        title: context.l10n.categoryGaming,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 4,
         onTap: () {
@@ -112,7 +112,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsHoliday,
-        title: "Holidays",
+        title: context.l10n.categoryHolidays,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 5,
         onTap: () {
@@ -124,7 +124,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsWorkshop,
-        title: "Workshops",
+        title: context.l10n.categoryWorkshops,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 6,
         onTap: () {
@@ -136,7 +136,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
       ),
       CategoryCard(
         icon: AppIcons.iconsExihbition,
-        title: "Exhibtions",
+        title: context.l10n.categoryExhibitions,
         borderColor: AppColors.primaryColor,
         isSelected: selectedCategoryIndex == 7,
         onTap: () {
@@ -185,7 +185,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
       backgroundColor: AppColors.white,
       appBar: AppBar(
         title: Text(
-          "Edit Event",
+          context.l10n.editEvent,
           style: AppTextStyles.styleMedium20(context)
               .copyWith(color: AppColors.primaryColor),
         ),
@@ -229,22 +229,22 @@ class _EditEventScreenState extends State<EditEventScreen> {
                           .setOnlyPadding(context, left: 8);
                     }).setOnlyPadding(context, bottom: 10),
               ),
-              Text("Title", style: AppTextStyles.styleMedium16(context)),
+              Text(context.l10n.titleLabel, style: AppTextStyles.styleMedium16(context)),
               5.setVerticalSpace(),
               CustomTextFormField(
                 controller: titleController,
-                hintText: "Event Title",
+                hintText: context.l10n.eventTitleHint,
                 prefixIcn: const Icon(
                   Icons.edit,
                   color: AppColors.grey,
                 ),
               ),
               16.setVerticalSpace(),
-              Text("Description", style: AppTextStyles.styleMedium16(context)),
+              Text(context.l10n.description, style: AppTextStyles.styleMedium16(context)),
               5.setVerticalSpace(),
               CustomTextFormField(
                 controller: descriptionController,
-                hintText: "Event Description",
+                hintText: context.l10n.eventDescriptionHint,
                 minLines: 3,
               ),
               16.setVerticalSpace(),
@@ -255,7 +255,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
                   ),
                   5.setHorizontalSpace(),
                   Text(
-                    "Event Date",
+                    context.l10n.eventDate,
                     style: AppTextStyles.styleMedium16(context),
                   ),
                   const Spacer(),
@@ -310,8 +310,8 @@ class _EditEventScreenState extends State<EditEventScreen> {
                       Expanded(
                         child: Text(
                           location.isNotEmpty
-                              ? "Location: $location"
-                              : "Choose Event Location",
+                              ? context.l10n.locationLabel(location)
+                              : context.l10n.chooseEventLocation,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: AppTextStyles.styleMedium16(context)
@@ -328,7 +328,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
               ),
               16.setVerticalSpace(),
               CustomElevatedButton(
-                text: "Update Event",
+                text: context.l10n.updateEvent,
                 onPressed: () async {
                   eventDataModel.eventTitle = titleController.text;
                   eventDataModel.eventDescription = descriptionController.text;
@@ -347,9 +347,9 @@ class _EditEventScreenState extends State<EditEventScreen> {
                   if (isUpdated) {
                     Navigator.pop(context, eventDataModel);
                     SnackBarService.showSuccessMessage(
-                        "Event Updated Successfully");
+                        context.l10n.eventUpdatedSuccessfully);
                   } else {
-                    SnackBarService.showErrorMessage("Failed to update event");
+                    SnackBarService.showErrorMessage(context.l10n.failedToUpdateEvent);
                   }
                 },
               ),

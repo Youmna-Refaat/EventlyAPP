@@ -1,5 +1,6 @@
 import 'package:evently_app/core/services/snack_bar_service.dart';
 import 'package:evently_app/extenstions/extension.dart';
+import 'package:evently_app/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -12,12 +13,12 @@ class FirebaseAuthServices {
 
     if (!Validations.validateEmail(email)) {
       EasyLoading.dismiss();
-      SnackBarService.showErrorMessage("Invalid email format");
+      SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.invalidEmailFormat);
       return false;
     }
     if (!Validations.validatePassword(password)) {
       EasyLoading.dismiss();
-      SnackBarService.showErrorMessage("Wrong password");
+      SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.wrongPasswordShort);
       return false;
     }
 
@@ -27,31 +28,31 @@ class FirebaseAuthServices {
         email: email,
         password: password,
       );
-      SnackBarService.showSuccessMessage("Account Created Successfully");
+      SnackBarService.showSuccessMessage(navigatorKey.currentContext!.l10n.accountCreatedSuccessfullyAuth);
       return true;
     } on FirebaseAuthException catch (e) {
       EasyLoading.dismiss();
       if (e.code == 'weak-password') {
         SnackBarService.showErrorMessage(
-            e.message ?? "The password provided is too weak");
+            e.message ?? navigatorKey.currentContext!.l10n.passwordTooWeak);
       } else if (e.code == 'email-already-in-use') {
         SnackBarService.showErrorMessage(
-            e.message ?? "The account already exists for that email");
+            e.message ?? navigatorKey.currentContext!.l10n.emailAlreadyInUse);
       } else if (e.code == 'invalid-email') {
         SnackBarService.showErrorMessage(
-            "The email address is badly formatted");
+            navigatorKey.currentContext!.l10n.emailBadlyFormatted);
       } else {
-        SnackBarService.showErrorMessage("An unexpected error occurred");
+        SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.unexpectedErrorOccurred);
       }
       return false;
     } on PlatformException catch (e) {
       EasyLoading.dismiss();
       SnackBarService.showErrorMessage(
-          "An unexpected platform error occurred: ${e.message}");
+          navigatorKey.currentContext!.l10n.unexpectedPlatformError(e.message ?? ""));
       return false;
     } catch (e) {
       EasyLoading.dismiss();
-      SnackBarService.showErrorMessage("An unexpected error occurred");
+      SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.unexpectedErrorOccurred);
       return false;
     }
   }
@@ -62,12 +63,12 @@ class FirebaseAuthServices {
 
     if (!Validations.validateEmail(email)) {
       EasyLoading.dismiss();
-      SnackBarService.showErrorMessage("Invalid email format");
+      SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.invalidEmailFormat);
       return false;
     }
     if (!Validations.validatePassword(password)) {
       EasyLoading.dismiss();
-      SnackBarService.showErrorMessage("Wrong password");
+      SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.wrongPasswordShort);
       return false;
     }
     try {
@@ -76,31 +77,31 @@ class FirebaseAuthServices {
         email: email,
         password: password,
       );
-      SnackBarService.showSuccessMessage("Logged in Successfully");
+      SnackBarService.showSuccessMessage(navigatorKey.currentContext!.l10n.loggedInSuccessfully);
       return true;
     } on FirebaseAuthException catch (e) {
       EasyLoading.dismiss();
       if (e.code == 'user-not-found') {
         SnackBarService.showErrorMessage(
-            e.message ?? "No user found for that email");
+            e.message ?? navigatorKey.currentContext!.l10n.noUserFoundForEmail);
       } else if (e.code == 'wrong-password') {
         SnackBarService.showErrorMessage(
-            e.message ?? "Wrong password provided for that user");
+            e.message ?? navigatorKey.currentContext!.l10n.wrongPasswordForUser);
       } else if (e.code == 'invalid-email') {
         SnackBarService.showErrorMessage(
-            "The email address is badly formatted");
+            navigatorKey.currentContext!.l10n.emailBadlyFormatted);
       } else {
-        SnackBarService.showErrorMessage("An unexpected error occurred");
+        SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.unexpectedErrorOccurred);
       }
       return false;
     } on PlatformException catch (e) {
       EasyLoading.dismiss();
       SnackBarService.showErrorMessage(
-          "An unexpected platform error occurred: ${e.message}");
+          navigatorKey.currentContext!.l10n.unexpectedPlatformError(e.message ?? ""));
       return false;
     } catch (e) {
       EasyLoading.dismiss();
-      SnackBarService.showErrorMessage("An unexpected error occurred");
+      SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.unexpectedErrorOccurred);
       return false;
     }
   }
@@ -108,9 +109,9 @@ class FirebaseAuthServices {
   static Future<void> logout() async {
     try {
       await FirebaseAuth.instance.signOut();
-      SnackBarService.showSuccessMessage("Logged out successfully");
+      SnackBarService.showSuccessMessage(navigatorKey.currentContext!.l10n.loggedOutSuccessfully);
     } catch (e) {
-      SnackBarService.showErrorMessage("An error occurred while logging out");
+      SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.errorWhileLoggingOut);
     }
   }
 
@@ -129,7 +130,7 @@ class FirebaseAuthServices {
       GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       if (googleUser == null) {
         EasyLoading.dismiss();
-        SnackBarService.showErrorMessage("Google Sign-In cancelled");
+        SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.googleSignInCancelled);
         return false;
       }
       GoogleSignInAuthentication googleAuth = await googleUser.authentication;
@@ -140,15 +141,15 @@ class FirebaseAuthServices {
       UserCredential userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
       EasyLoading.dismiss();
-      SnackBarService.showSuccessMessage("Signed in with Google successfully");
+      SnackBarService.showSuccessMessage(navigatorKey.currentContext!.l10n.signedInWithGoogleSuccessfully);
       return true;
     } on FirebaseAuthException catch (e) {
       EasyLoading.dismiss();
-      SnackBarService.showErrorMessage(e.message ?? "Google Sign-In failed");
+      SnackBarService.showErrorMessage(e.message ?? navigatorKey.currentContext!.l10n.googleSignInFailed);
       return false;
     } catch (e) {
       EasyLoading.dismiss();
-      SnackBarService.showErrorMessage("An unexpected error occurred");
+      SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.unexpectedErrorOccurred);
       return false;
     }
   }
@@ -163,17 +164,17 @@ class FirebaseAuthServices {
     } on FirebaseAuthException catch (e) {
       EasyLoading.dismiss();
       if (e.code == 'user-not-found') {
-        SnackBarService.showErrorMessage("No user found for that email");
+        SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.noUserFoundForEmail);
       } else if (e.code == 'invalid-email') {
         SnackBarService.showErrorMessage(
-            "The email address is badly formatted");
+            navigatorKey.currentContext!.l10n.emailBadlyFormatted);
       } else {
-        SnackBarService.showErrorMessage("An unexpected error occurred");
+        SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.unexpectedErrorOccurred);
       }
       return false;
     } catch (e) {
       EasyLoading.dismiss();
-      SnackBarService.showErrorMessage("An unexpected error occurred");
+      SnackBarService.showErrorMessage(navigatorKey.currentContext!.l10n.unexpectedErrorOccurred);
       return false;
     }
   }

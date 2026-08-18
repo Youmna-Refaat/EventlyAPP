@@ -37,7 +37,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
       backgroundColor: AppColors.white,
       appBar: AppBar(
         title: Text(
-          "Event Details",
+          context.l10n.eventDetails,
           style: AppTextStyles.styleMedium20(context)
               .copyWith(color: AppColors.primaryColor),
         ),
@@ -76,9 +76,10 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                 if (isDeleted) {
                   Navigator.pop(navigatorKey.currentContext!);
                   SnackBarService.showSuccessMessage(
-                      'Event deleted successfully');
+                      context.l10n.eventDeletedSuccessfully);
                 } else {
-                  SnackBarService.showErrorMessage('Failed to delete event');
+                  SnackBarService.showErrorMessage(
+                      context.l10n.failedToDeleteEvent);
                 }
               }
             },
@@ -153,8 +154,8 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
                   Expanded(
                     child: Text(
                       eventDataModel.location.isNotEmpty
-                          ? "Location: ${eventDataModel.location}"
-                          : "Choose Event Location",
+                          ? context.l10n.locationLabel(eventDataModel.location)
+                          : context.l10n.chooseEventLocation,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyles.styleMedium16(context)
@@ -193,7 +194,7 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
               ),
             ),
             16.setVerticalSpace(),
-            Text("Description",
+            Text(context.l10n.description,
                 style: AppTextStyles.styleMedium16(context)
                     .copyWith(color: AppColors.primaryColor)),
             Text(
@@ -211,20 +212,20 @@ class _EventDetailsScreenState extends State<EventDetailsScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Delete Event'),
-          content: const Text('Are you sure you want to delete this event?'),
+          title: Text(context.l10n.deleteEvent),
+          content: Text(context.l10n.deleteEventConfirmation),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(false);
               },
-              child: const Text('Cancel'),
+              child: Text(context.l10n.cancel),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(true);
               },
-              child: const Text('Delete'),
+              child: Text(context.l10n.delete),
             ),
           ],
         );

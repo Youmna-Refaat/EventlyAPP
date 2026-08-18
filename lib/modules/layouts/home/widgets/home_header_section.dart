@@ -44,11 +44,11 @@ class HomeHeaderSection extends StatelessWidget {
           }
 
           if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
+            return Center(child: Text(context.l10n.errorWithMessage(snapshot.error!)));
           }
 
           if (!snapshot.hasData) {
-            return const Center(child: Text('No user data found'));
+            return Center(child: Text(context.l10n.noUserDataFound));
           }
 
           final userData = snapshot.data!;
@@ -73,7 +73,7 @@ class HomeHeaderSection extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Welcome Back",
+                              context.l10n.welcomeBack,
                               style: AppTextStyles.styleRegular14(context)
                                   .copyWith(color: AppColors.white),
                             ),
@@ -141,7 +141,7 @@ class HomeHeaderSection extends StatelessWidget {
                         color: AppColors.white,
                       ),
                       Text(
-                        "Cairo , Egypt",
+                        context.l10n.cairoEgypt,
                         style: AppTextStyles.styleMedium14(context)
                             .copyWith(color: AppColors.white),
                       )

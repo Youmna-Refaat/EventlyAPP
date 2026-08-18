@@ -34,7 +34,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               20.setVerticalSpace(),
               Text(
-                "Language",
+                context.l10n.language,
                 style: AppTextStyles.styleBold20(context),
               ),
               6.setVerticalSpace(),
@@ -63,18 +63,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               16.setVerticalSpace(),
               Text(
-                "Theme",
+                context.l10n.theme,
                 style: AppTextStyles.styleBold20(context),
               ),
               6.setVerticalSpace(),
               CustomDropdown<String>(
-                hintText: provider.isDark() ? "Dark" : "Light",
-                items: provider.themeList,
+                hintText:
+                    provider.isDark() ? context.l10n.themeDark : context.l10n.themeLight,
+                items: [context.l10n.themeLight, context.l10n.themeDark],
                 onChanged: (value) {
-                  if (value == "Dark") {
+                  if (value == context.l10n.themeDark) {
                     provider.setCurrentTheme(ThemeMode.dark);
                   }
-                  if (value == "Light") {
+                  if (value == context.l10n.themeLight) {
                     provider.setCurrentTheme(ThemeMode.light);
                   }
                 },
@@ -116,7 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     10.setHorizontalSpace(),
                     Text(
-                      "Logout",
+                      context.l10n.logout,
                       style: AppTextStyles.styleMedium20(context).copyWith(
                         color: AppColors.white,
                       ),

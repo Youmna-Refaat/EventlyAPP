@@ -74,11 +74,11 @@ class _LogInScreenState extends State<LogInScreen> {
               15.setVerticalSpace(),
               CustomTextFormField(
                 controller: emailController,
-                hintText: "Email",
+                hintText: context.l10n.emailHint,
                 onFieldSubmitted: (value) {
                   if (!Validations.validateEmail(value)) {
                     setState(() {
-                      _showSnackBarAfterDelay("invalid email");
+                      _showSnackBarAfterDelay(context.l10n.invalidEmail);
                     });
                   }
                 },
@@ -88,18 +88,18 @@ class _LogInScreenState extends State<LogInScreen> {
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
+                    return context.l10n.pleaseEnterEmail;
                   }
                   return null;
                 },
               ).setVerticalPadding(context, value: 0.02.height),
               CustomTextFormField(
                 controller: passwordController,
-                hintText: "Password",
+                hintText: context.l10n.passwordHint,
                 onFieldSubmitted: (value) {
                   if (!Validations.validatePassword(value)) {
                     setState(() {
-                      _showSnackBarAfterDelay("wrong password");
+                      _showSnackBarAfterDelay(context.l10n.wrongPassword);
                     });
                   }
                 },
@@ -110,7 +110,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 isPassword: true,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter your password';
+                    return context.l10n.pleaseEnterPassword;
                   }
                   return null;
                 },
@@ -129,9 +129,9 @@ class _LogInScreenState extends State<LogInScreen> {
                   onTap: () => context.goToNamed(
                     routeName: ScreensRouteNames.forgotPasswordRoute,
                   ),
-                  child: const Text(
-                    "Forget Password?",
-                    style: TextStyle(
+                  child: Text(
+                    context.l10n.forgetPasswordQuestion,
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       fontFamily: "Inter",
@@ -145,7 +145,7 @@ class _LogInScreenState extends State<LogInScreen> {
               SizedBox(
                 height: 0.07.height,
                 child: CustomElevatedButton(
-                    text: "Login",
+                    text: context.l10n.login,
                     onPressed: () {
                       if (formkey.currentState!.validate()) {
                         FirebaseAuthServices.login(
@@ -166,7 +166,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 textAlign: TextAlign.center,
                 TextSpan(children: [
                   TextSpan(
-                    text: "Dont have an account? ",
+                    text: context.l10n.dontHaveAccount,
                     style: AppTextStyles.styleMedium16(context)
                         .copyWith(color: AppColors.black),
                   ),
@@ -176,9 +176,9 @@ class _LogInScreenState extends State<LogInScreen> {
                         context.goToNamed(
                             routeName: ScreensRouteNames.registerRoute);
                       },
-                      child: const Text(
-                        "Create Account",
-                        style: TextStyle(
+                      child: Text(
+                        context.l10n.createAccount,
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           fontFamily: "Inter",
@@ -203,7 +203,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     ),
                   ),
                   Text(
-                    "Or",
+                    context.l10n.or,
                     style: AppTextStyles.styleMedium16(context)
                         .copyWith(color: AppColors.primaryColor),
                   ),
@@ -244,7 +244,7 @@ class _LogInScreenState extends State<LogInScreen> {
                     ).setVerticalPadding(context, value: 10),
                     20.setHorizontalSpace(),
                     Text(
-                      "Continue with Google",
+                      context.l10n.continueWithGoogle,
                       style: AppTextStyles.styleMedium20(context).copyWith(
                         color: AppColors.primaryColor,
                       ),

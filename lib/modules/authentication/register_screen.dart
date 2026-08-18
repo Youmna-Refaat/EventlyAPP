@@ -36,7 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       backgroundColor: AppColors.white,
       appBar: AppBar(
         title: Text(
-          "Register",
+          context.l10n.register,
           style: AppTextStyles.styleMedium20(context)
               .copyWith(color: AppColors.primaryColor),
         ),
@@ -61,7 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               width: 0.34.width,
             ).setToCenter(),
             CustomTextFormField(
-              hintText: "Name",
+              hintText: context.l10n.nameHint,
               prefixIcn: SvgPicture.asset(
                 AppIcons.iconsPerson,
                 height: 5,
@@ -69,13 +69,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
               controller: nameController,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return 'Please enter your name';
+                  return context.l10n.pleaseEnterName;
                 }
                 return null;
               },
             ).setVerticalPadding(context, value: 0.02.height),
             CustomTextFormField(
-              hintText: "Email",
+              hintText: context.l10n.emailHint,
               prefixIcn: SvgPicture.asset(
                 AppIcons.iconsEmail,
                 height: 5,
@@ -83,16 +83,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               controller: emailController,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return "Please enter your email";
+                  return context.l10n.pleaseEnterEmail;
                 }
                 if (!Validations.validateEmail(value)) {
-                  return "Please enter a valid email";
+                  return context.l10n.pleaseEnterValidEmail;
                 }
                 return null;
               },
             ).setVerticalPadding(context, value: 0.02.height),
             CustomTextFormField(
-              hintText: "Password",
+              hintText: context.l10n.passwordHint,
               prefixIcn: SvgPicture.asset(
                 AppIcons.iconsLock,
                 height: 5,
@@ -101,16 +101,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
               controller: passwordController,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return "Please enter a password";
+                  return context.l10n.pleaseEnterAPassword;
                 }
                 if (!Validations.validatePassword(value)) {
-                  return "Password must be at least 6 characters";
+                  return context.l10n.passwordTooShort;
                 }
                 return null;
               },
             ).setVerticalPadding(context, value: 0.02.height),
             CustomTextFormField(
-              hintText: "Re Password",
+              hintText: context.l10n.rePasswordHint,
               prefixIcn: SvgPicture.asset(
                 AppIcons.iconsLock,
                 height: 5,
@@ -118,10 +118,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
               isPassword: true,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
-                  return 'Please enter your password';
+                  return context.l10n.pleaseEnterPassword;
                 }
                 if (value != passwordController.text) {
-                  return "Password does not match";
+                  return context.l10n.passwordDoesNotMatch;
                 }
                 return null;
               },
@@ -129,10 +129,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
             SizedBox(
                 height: 0.07.height,
                 child: CustomElevatedButton(
-                    text: "Create Account",
+                    text: context.l10n.createAccount,
                     onPressed: () async {
                       if (formkey.currentState!.validate()) {
-                        EasyLoading.show(status: 'Creating Account...');
+                        EasyLoading.show(status: context.l10n.creatingAccount);
                         FirebaseAuthServices.createAccount(
                           email: emailController.text,
                           password: passwordController.text,
@@ -156,7 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 routeName: ScreensRouteNames.loginRoute);
                           } else {
                             SnackBarService.showSuccessMessage(
-                                "Account created successfully");
+                                context.l10n.accountCreatedSuccessfully);
                           }
                         });
                       }
@@ -168,7 +168,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               textAlign: TextAlign.center,
               TextSpan(children: [
                 TextSpan(
-                  text: "Already have an account? ",
+                  text: context.l10n.alreadyHaveAccount,
                   style: AppTextStyles.styleMedium16(context)
                       .copyWith(color: AppColors.black),
                 ),
@@ -178,9 +178,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       context.goToNamed(
                           routeName: ScreensRouteNames.loginRoute);
                     },
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
+                    child: Text(
+                      context.l10n.login,
+                      style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Inter",

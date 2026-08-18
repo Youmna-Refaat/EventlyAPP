@@ -119,7 +119,7 @@ class _MapScreenState extends State<MapScreen> {
       if (!mounted) return;
 
       _showLocationError(
-        'Unable to get your current location.',
+        context.l10n.unableToGetLocation,
       );
 
       debugPrint(
@@ -182,7 +182,7 @@ class _MapScreenState extends State<MapScreen> {
       SnackBar(
         content: Text(message),
         action: SnackBarAction(
-          label: 'Settings',
+          label: context.l10n.settingsLabel,
           onPressed: () {
             Geolocator.openAppSettings();
           },
